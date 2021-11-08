@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>New User</title>
+</head>
+<body>
+	<form th:action="@{/user}" method="post" th:object="${user}">
+			
+			<div th:include="_template :: form-user"></div>
+			
+			<div>
+				<a href="/user" >Cancelar</a>
+				<button >Salvar</button>
+			</div>
+			
+	</form>
+</body>
+</html>

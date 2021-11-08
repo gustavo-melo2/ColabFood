@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Edit User</title>
+</head>
+<body>
+	<form th:action="@{/user/edit}" method="post" th:object="${user}">
+			
+			<div th:include="_template :: form-user"></div>
+			
+			<div>
+				<a href="/user">Cancelar</a>
+				<button>Editar</button>
+			</div>
+			
+	</form>
+</body>
+</html>
