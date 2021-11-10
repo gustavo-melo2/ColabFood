@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Login - Colab Food</title>
+</head>
+<body>
+  
+	<span th:text="${msg}" th:if="${msg != null}"></span>
+	
+	<form th:action="@{/login}" method="post">
+	
+		<label for="email">E-mail</label>
+		<input 
+			type="email" 
+			name="username" 
+			id="email" 			 
+		/>
+
+		<br>
+		
+		<label for="password">Password</label>
+		<input 
+			type="password" 
+			name="password" 
+			id="password" 		 
+		/>
+		
+		<div>
+			<a href="/user/new" >Cadastrar-se</a>
+			<button >Logar</button>
+		</div>
+		
+	</form>
+
+</body>
+</html>

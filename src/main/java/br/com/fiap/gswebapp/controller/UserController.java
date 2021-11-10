@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,21 +17,22 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.fiap.gswebapp.model.User;
 import br.com.fiap.gswebapp.repository.UserRepository;
+import br.com.fiap.gswebapp.service.AuthenticationService;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
+	
 	@Autowired
 	private UserRepository repository;
 	
 	@PostMapping
 	public String save(@Valid User user, BindingResult result, RedirectAttributes redirect) {
 		if(result.hasErrors()) return "user-form";
-		//user.setPassword(authenticationService.getPasswordEncoder().encode(user.getPassword()));
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		repository.save(user);
-		//redirect.addFlashAttribute("message", messages.getMessage("message.success.newuser", null, LocaleContextHolder.getLocale()));
-		return "redirect:/";
+		redirect.addFlashAttribute("msg", "Cadastrado com sucesso!");
+		return "redirect:/login";
 	}
 	
 	@RequestMapping("new")
@@ -50,7 +52,7 @@ public class UserController {
 	}
 	
 	@PostMapping("edit")
-	public String edit(@Valid User user, BindingResult result){
+	public String edit(@Valid User user, BindingResult result, RedirectAttributes redirect){
 		Optional<User> userFromDb = repository.findById(user.getId());
 	    
 		if(result.hasErrors()) {
@@ -73,7 +75,9 @@ public class UserController {
 		    repository.save(userDb);
 		}
 		
-		return "redirect:/";
+		redirect.addFlashAttribute("msg", "Editado com sucesso!");
+		
+		return "redirect:/login";
 	}
 	
 	
