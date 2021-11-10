@@ -41,9 +41,9 @@ public class UserController {
 	@GetMapping("{id}")
 	public ModelAndView show(@PathVariable Long id, User user){
 		ModelAndView modelAndView = new ModelAndView("user-form-edit");
-		Optional<User> user1 = repository.findById(id);
-		if(user1.isPresent()) {
-			modelAndView.addObject((User)user1.get());
+		Optional<User> userFromDb = repository.findById(id);
+		if(userFromDb.isPresent()) {
+			modelAndView.addObject((User)userFromDb.get());
 		}
 		
 		return modelAndView;

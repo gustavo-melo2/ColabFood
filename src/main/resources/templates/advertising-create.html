@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>New Advertising</title>
+</head>
+<body>
+	<form th:action="@{/advertising}" method="post" th:object="${advertising}">
+			
+			<div th:include="_template :: form-advertising"></div>
+			
+			<div>
+				<a href="/advertising" >Cancelar</a>
+				<button >Salvar</button>
+			</div>
+			
+	</form>
+</body>
+</html>
