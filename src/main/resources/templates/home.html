@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html 
+	xmlns:th="http://thymeleaf.org"
+	xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="utf-8">
 <title>Home</title>
 </head>
 <body>
-	<h1>Olá, usuario</h1>
-	
+	<h1 th:text="${'Olá, '+ #authentication.getPrincipal().getName()}"></h1>
+	<span th:text="${msg}" th:if="${msg != null}"></span>
 	<div th:each="a : ${advertisings}">
 		<div>
 			<h2 th:text="${a.title}"></h2>
 			<p th:text="${a.address}"></p>
 			<p th:text="${a.quantity}"></p> 
-			<button>Detalhes</button>
+			<a th:href="${'/advertising/' + a.id}"> Detalhes</a>
 		</div>
 	</div>
 </body>

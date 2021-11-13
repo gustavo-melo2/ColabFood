@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:object="${advertising}">
+		<h2 th:text="*{title}"></h2>
+		
+		<form th:action="@{/donation}" method="post" th:object="${donation}">
+			<input type="hidden" name="advertisingId" th:value="${advertising.id}"/>
+			<button>Iniciar doação</button>
+		</form>
+		<a th:href="*{ '/donation/' + id}"></a>
+	</div>
+</body>
+</html>

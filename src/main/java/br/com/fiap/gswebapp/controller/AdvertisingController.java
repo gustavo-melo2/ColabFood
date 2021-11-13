@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.fiap.gswebapp.model.Advertising;
+import br.com.fiap.gswebapp.model.Donation;
+import br.com.fiap.gswebapp.model.User;
 import br.com.fiap.gswebapp.repository.AdvertisingRepository;
+import br.com.fiap.gswebapp.repository.DonationRepository;
 
 @Controller
 public class AdvertisingController {
@@ -23,6 +27,8 @@ public class AdvertisingController {
 	@Autowired
 	private AdvertisingRepository repository;
 	
+	@Autowired
+	private DonationRepository donationRepository;
 	
 	@GetMapping("/")
 	public ModelAndView index() {
@@ -38,19 +44,29 @@ public class AdvertisingController {
 	}
 	
 	@PostMapping("/advertising")
-	public String save(@Valid Advertising advertising, BindingResult result, RedirectAttributes redirect) {
+	public String save(@Valid Advertising advertising, BindingResult result, RedirectAttributes redirect, Authentication auth) {
 		if(result.hasErrors()) return "advertising-create";
 		
-		repository.save(advertising);
+		User user = (User) auth.getPrincipal();
+		
+		Donation donation = new Donation(advertising, user, null, null);
+		
+		donationRepository.save(donation);
 		
 		return "redirect:/";
 	}
 	@GetMapping("/advertising/{id}")
-	public ModelAndView show(@PathVariable Long id, Advertising advertising ) {
-		ModelAndView modelAndView = new ModelAndView("advertising-edit");
+	public ModelAndView show(@PathVariable Long id, Advertising advertising) {
+		ModelAndView modelAndView = new ModelAndView("advertising");
 		Optional<Advertising> advertisingFromDb = repository.findById(id);
 		
-		if(advertisingFromDb.isPresent()) modelAndView.addObject((Advertising)advertisingFromDb.get());
+		if(advertisingFromDb.isPresent()) { 
+			modelAndView.addObject((Advertising)advertisingFromDb.get());
+		}//else{
+//			modelAndView.setViewName("home");
+//			redirect.addFlashAttribute("msg", "Anuncio não encontrado.");
+//			redirect.
+//		}
 		
 		return modelAndView;	
 	}
