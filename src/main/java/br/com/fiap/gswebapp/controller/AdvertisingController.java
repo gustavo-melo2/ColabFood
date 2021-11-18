@@ -1,10 +1,8 @@
 package br.com.fiap.gswebapp.controller;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.validation.Valid;
-
+import br.com.fiap.gswebapp.model.Advertising;
+import br.com.fiap.gswebapp.model.User;
+import br.com.fiap.gswebapp.repository.AdvertisingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -15,11 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.fiap.gswebapp.model.Advertising;
-import br.com.fiap.gswebapp.model.Donation;
-import br.com.fiap.gswebapp.model.User;
-import br.com.fiap.gswebapp.repository.AdvertisingRepository;
-import br.com.fiap.gswebapp.repository.DonationRepository;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 import static br.com.fiap.gswebapp.model.StatusEnum.ACTIVE;
 

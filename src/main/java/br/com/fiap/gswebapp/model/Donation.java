@@ -1,9 +1,8 @@
 package br.com.fiap.gswebapp.model;
 
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Objects;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "GS_DONATION")
