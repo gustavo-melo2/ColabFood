@@ -1,6 +1,8 @@
 package br.com.fiap.gswebapp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
@@ -14,21 +16,28 @@ public class Advertising implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_user")
 	private User user;
-	
+
+	@NotBlank(message = "{advertising.title.blank}")
 	private String title;
-	
+
+	@Min(value = 1, message = "{advertising.quantity.min}")
 	private int quantity;
 	
 	private int remainingQuantity;
-	
+
+	@NotBlank(message = "{advertising.description.blank}")
 	private String description;
-	
+
+	@NotBlank(message = "{advertising.address.blank}")
 	private String address;
-	
+
+	@NotBlank(message = "{advertising.city.blank}")
 	private String city;
-	
+
+	@NotBlank(message = "{advertising.state.blank}")
 	private String state;
-	
+
+	@NotBlank(message = "{advertising.country.blank}")
 	private String country;
 
 	@Enumerated(EnumType.STRING)

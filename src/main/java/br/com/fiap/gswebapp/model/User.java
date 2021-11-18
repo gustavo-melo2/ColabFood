@@ -4,6 +4,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -13,27 +17,38 @@ public class User implements UserDetails{
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@Size(min = 11, max = 14, message = "{user.document.number.size}")
 	private String documentNumber;
-	
+
+	@NotBlank(message = "{user.name.blank}")
 	private String name;
-	
+
+	@Size(min = 8, message = "{user.password.size}")
 	private String password;
-	
+
+	@NotBlank(message = "{user.email.blank}")
 	private String email;
-	
+
+	@NotNull(message = "{user.type.null}")
 	private Type type;
-	
+
+	@Size(min = 12, max = 12, message = "{user.phone.number.size}")
 	private String phoneNumber;
-	
+
+	@NotBlank(message = "{user.country.blank}")
 	private String country;
-	
+
+	@NotBlank(message = "{user.address.blank}")
 	private String address;
-	
+
+	@NotBlank(message = "{user.city.blank}")
 	private String city;
-	
+
+	@NotBlank(message = "{user.state.blank}")
 	private String state;
 
 	public User() {
@@ -55,7 +70,6 @@ public class User implements UserDetails{
 		this.city = city;
 		this.state = state;
 	}
-
 
 	public User(Long id, String documentNumber, String name, String password, Type type, String phoneNumber,
 			String email, String country, String address, String city, String state) {
