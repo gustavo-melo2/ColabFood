@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<head>
-<meta charset="utf-8">
-<title th:text="#{title.new.advertising}"></title>
-</head>
+<head th:include="_template :: head(#{title.new.advertising})"></head>
 <body>
 	<form th:action="@{/advertising}" method="post" th:object="${advertising}">
 			

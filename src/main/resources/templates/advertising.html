@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<head>
-<meta charset="utf-8">
-<title th:text="#{title.advertising}"></title>
-</head>
+<head th:include="_template :: head(#{title.advertising})"></head>
 <body>
+
+	<header th:include="_template :: navbar"></header>
+	
+	
+
+
 	<div th:object="${advertising}">
 		<h2 th:text="*{title}"></h2>
 		

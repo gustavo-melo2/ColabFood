@@ -1,0 +1,40 @@
+﻿.colab-logo {
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.colab-menu {
+    filter: invert(84%) sepia(0%) saturate(684%) hue-rotate(185deg) brightness(83%) contrast(86%);
+    font-weight: 500;
+}
+
+    .colab-menu:hover, .colab-menu:active {
+        filter: invert(61%) sepia(71%) saturate(5707%) hue-rotate(203deg) brightness(99%) contrast(87%);
+    }
+
+.colab-user {
+    font-size: 3.25rem;
+    font-weight: 700;
+}
+
+.user-label {
+    color: #aaa;
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.user-txt-value {
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.form-withdraw .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.form-withdraw .form-control {
+    width: 90px;
+}

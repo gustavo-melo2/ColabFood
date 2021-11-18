@@ -1,8 +1,64 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 
+
+<head th:fragment="head(title)">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title th:text="${title}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{~/css/site.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{~/css/style.css}">
+    
+    <link rel="stylesheet" th:href="@{~/lib/bootstrap/dist/css/bootstrap.min.css}" />
+</head>
+
 <body>
 
+	<div th:fragment="scripts">
+		<script th:src="@{~/lib/jquery/dist/jquery.min.js}"></script>
+	    <script th:src="@{~/lib/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
+	    <script th:src="@{~/js/site.js}"></script>
+	</div>
+
+	<header th:fragment="navbar">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-5">
+            <div class="container">
+                <a class="navbar-brand colab-logo" href="/">Colab Food</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link colab-menu" href="/">
+                                <img th:src="@{~/img/icons/home.svg}" width="14" height="22" class="d-inline-block align-top" /> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link colab-menu" href="/advertising/new">
+                                <img th:src="@{~/img/icons/new-document.svg}" width="17" height="23" class="d-inline-block align-top" /> Novo Anúncio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link colab-menu" href="/">
+                                <img th:src="@{~/img/icons/list.svg}" width="13" height="23" class="d-inline-block align-top" /> Doações
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle colab-menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img th:src="@{~/img/icons/user.svg}" width="13" height="22" class="d-inline-block align-top" /> Perfil
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/">Informações</a>
+                                <a class="dropdown-item bg-danger" href="/logout">Sair</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
 	<div th:fragment="form-user">
 		<input type="hidden" name="id" th:field="*{id}"/>
 		

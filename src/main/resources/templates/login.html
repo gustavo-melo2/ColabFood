@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<head>
-<meta charset="utf-8">
-<title th:text="#{title.login}"></title>
-</head>
+
+<head th:include="_template :: head(#{title.login})"></head>
+
 <body>
   
 	<span th:text="${msg}" th:if="${msg != null}"></span>
-	<span th:if="${param.error}">Login inv√°lido</span>
+	<span th:if="${param.error}">Login inv·lido</span>
 	
 	<form th:action="@{/login}" method="post">
 	

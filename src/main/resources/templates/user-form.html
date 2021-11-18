@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<head>
-<meta charset="utf-8">
-<title th:text="#{title.new.user}"></title>
-</head>
+<head th:include="_template :: head(#{title.new.user})"></head>
 <body>
 	<form th:action="@{/user}" method="post" th:object="${user}">
 			
