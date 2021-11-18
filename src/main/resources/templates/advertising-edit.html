@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title>Edit Advertising</title>
+<title th:text="#{title.edit.advertising}"></title>
 </head>
 <body>
 	<form th:action="@{/advertising/edit}" method="post" th:object="${advertising}">
@@ -10,8 +10,8 @@
 			<div th:include="_template :: form-advertising"></div>
 			
 			<div>
-				<a href="/">Cancelar</a>
-				<button>Editar</button>
+				<a href="/" th:text="#{button.cancel}"></a>
+				<button th:text="#{button.save}"></button>
 			</div>
 			
 	</form>

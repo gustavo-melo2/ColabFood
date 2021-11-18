@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title>New User</title>
+<title th:text="#{title.new.user}"></title>
 </head>
 <body>
 	<form th:action="@{/user}" method="post" th:object="${user}">
@@ -10,8 +10,8 @@
 			<div th:include="_template :: form-user"></div>
 			
 			<div>
-				<a href="/user" >Cancelar</a>
-				<button >Salvar</button>
+				<a href="/login" th:text="#{button.cancel}"></a>
+				<button th:text="#{button.save}"></button>
 			</div>
 			
 	</form>

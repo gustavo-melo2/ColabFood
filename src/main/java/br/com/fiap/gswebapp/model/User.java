@@ -2,6 +2,7 @@ package br.com.fiap.gswebapp.model;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,10 +24,6 @@ public class User implements UserDetails{
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Donation> donations;
 	
 	private String documentNumber;
 	
@@ -208,9 +205,18 @@ public class User implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
-	
-	
-	
-	
-	
+
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		User user = (User) o;
+		return Objects.equals(id, user.id) && Objects.equals(documentNumber, user.documentNumber) && Objects.equals(name, user.name) && Objects.equals(password, user.password) && Objects.equals(email, user.email) && type == user.type && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(country, user.country) && Objects.equals(address, user.address) && Objects.equals(city, user.city) && Objects.equals(state, user.state);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, documentNumber, name, password, email, type, phoneNumber, country, address, city, state);
+	}
 }

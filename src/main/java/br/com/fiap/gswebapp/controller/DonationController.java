@@ -1,9 +1,11 @@
 package br.com.fiap.gswebapp.controller;
 
+import java.util.Calendar;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
+import br.com.fiap.gswebapp.model.StatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -17,12 +19,13 @@ import br.com.fiap.gswebapp.model.User;
 import br.com.fiap.gswebapp.repository.AdvertisingRepository;
 import br.com.fiap.gswebapp.repository.DonationRepository;
 
+import static br.com.fiap.gswebapp.model.StatusEnum.INACTIVE;
+
 @Controller
 public class DonationController {
-
 	
 	@Autowired
-	private AdvertisingRepository AdvertisingRepository;
+	private AdvertisingRepository advertisingRepository;
 	
 	@Autowired
 	private DonationRepository repository;
@@ -33,25 +36,21 @@ public class DonationController {
 		
 		User user = (User) auth.getPrincipal();
 		
-		Optional<Advertising> advertising = AdvertisingRepository.findById(advertisingId);
-		
+		Optional<Advertising> advertising = advertisingRepository.findById(advertisingId);
+
 		if(advertising.isPresent()) {
-			Donation donation1 = new Donation((Advertising)advertising.get(), user, donation.getDateDonation(), donation.getStatus());
+			advertising.get().setStatus(INACTIVE);
+			Donation donation1 = new Donation(advertising.get(), Calendar.getInstance(), null);
 			String msg = "Processo de doação iniciado com sucesso!";
 			try {
+				donation1.setUser(user);
 				repository.save(donation1);
 			}catch(Exception e){
-				msg = "Você já incicou um processo de doação com este anuncio!";
+				msg = "Você já iniciou um processo de doação com este anuncio!";
+				e.printStackTrace();
 			}
 			redirect.addFlashAttribute("msg", msg);
 		}
-		
-		
-		
 		return "redirect:/";
-		
-		
 	}
-	
-	
 }

@@ -21,20 +21,19 @@ import br.com.fiap.gswebapp.model.User;
 import br.com.fiap.gswebapp.repository.AdvertisingRepository;
 import br.com.fiap.gswebapp.repository.DonationRepository;
 
+import static br.com.fiap.gswebapp.model.StatusEnum.ACTIVE;
+
 @Controller
 public class AdvertisingController {
 
 	@Autowired
 	private AdvertisingRepository repository;
 	
-	@Autowired
-	private DonationRepository donationRepository;
-	
 	@GetMapping("/")
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView("home");
-		List<Advertising> Advertisings = repository.findAll();
-		modelAndView.addObject("advertisings", Advertisings);
+		List<Advertising> advertisings = repository.findAllByStatus(ACTIVE);
+		modelAndView.addObject("advertisings", advertisings);
 		return modelAndView;
 	}
 	
@@ -46,12 +45,12 @@ public class AdvertisingController {
 	@PostMapping("/advertising")
 	public String save(@Valid Advertising advertising, BindingResult result, RedirectAttributes redirect, Authentication auth) {
 		if(result.hasErrors()) return "advertising-create";
-		
+
 		User user = (User) auth.getPrincipal();
-		
-		Donation donation = new Donation(advertising, user, null, null);
-		
-		donationRepository.save(donation);
+		advertising.setStatus(ACTIVE);
+
+		advertising.setUser(user);
+		repository.save(advertising);
 		
 		return "redirect:/";
 	}
@@ -61,7 +60,7 @@ public class AdvertisingController {
 		Optional<Advertising> advertisingFromDb = repository.findById(id);
 		
 		if(advertisingFromDb.isPresent()) { 
-			modelAndView.addObject((Advertising)advertisingFromDb.get());
+			modelAndView.addObject(advertisingFromDb.get());
 		}//else{
 //			modelAndView.setViewName("home");
 //			redirect.addFlashAttribute("msg", "Anuncio não encontrado.");

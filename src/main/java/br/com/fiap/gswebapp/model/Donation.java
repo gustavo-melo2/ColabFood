@@ -1,30 +1,23 @@
 package br.com.fiap.gswebapp.model;
 
 import java.util.Calendar;
+import java.util.Objects;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "GS_DONATION")
-@IdClass(DonationPK.class)
 public class Donation {
-	
+
 	@Id
-	@ManyToOne(cascade = CascadeType.ALL)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="id_advertising")
 	private Advertising advertising;
-	
-	@Id
-	@ManyToOne(cascade = CascadeType.ALL)
+
+	@ManyToOne
 	@JoinColumn(name="id_user")
 	private User user;
 	
@@ -38,10 +31,9 @@ public class Donation {
 	}
 
 
-	public Donation( Advertising advertising, User user, Calendar dateDonation, String status) {
+	public Donation( Advertising advertising, Calendar dateDonation, String status) {
 		super();
 		this.advertising = advertising;
-		this.user = user;
 		this.dateDonation = dateDonation;
 		this.status = status;
 	}
@@ -80,10 +72,17 @@ public class Donation {
 		this.status = status;
 	}
 
-	
-	
 
-	
-	
-	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Donation donation = (Donation) o;
+		return Objects.equals(id, donation.id) && Objects.equals(advertising, donation.advertising) && Objects.equals(user, donation.user) && Objects.equals(dateDonation, donation.dateDonation) && Objects.equals(status, donation.status);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, advertising, user, dateDonation, status);
+	}
 }

@@ -1,25 +1,21 @@
 package br.com.fiap.gswebapp.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "GS_ADVERTISING")
-public class Advertising {
+public class Advertising implements Serializable {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@OneToMany(mappedBy = "advertising", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Donation> donations;
+
+	@ManyToOne
+	@JoinColumn(name="id_user")
+	private User user;
 	
 	private String title;
 	
@@ -36,6 +32,9 @@ public class Advertising {
 	private String state;
 	
 	private String country;
+
+	@Enumerated(EnumType.STRING)
+	private StatusEnum status;
 
 	public Advertising() {
 		super();
@@ -140,7 +139,20 @@ public class Advertising {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
 
-	
+	public StatusEnum getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusEnum status) {
+		this.status = status;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 }

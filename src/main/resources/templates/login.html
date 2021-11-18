@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title>Login - Colab Food</title>
+<title th:text="#{title.login}"></title>
 </head>
 <body>
   
@@ -11,7 +11,7 @@
 	
 	<form th:action="@{/login}" method="post">
 	
-		<label for="email">E-mail</label>
+		<label for="email" th:text="#{label.user.email}"></label>
 		<input 
 			type="email" 
 			name="username" 
@@ -20,7 +20,7 @@
 
 		<br>
 		
-		<label for="password">Password</label>
+		<label for="password" th:text="#{label.user.password}"></label>
 		<input 
 			type="password" 
 			name="password" 
@@ -28,8 +28,8 @@
 		/>
 		
 		<div>
-			<a href="/user/new" >Cadastrar-se</a>
-			<button >Logar</button>
+			<a href="/user/new" th:text="#{button.user.new}"></a>
+			<button th:text="#{button.login}"></button>
 		</div>
 		
 	</form>
