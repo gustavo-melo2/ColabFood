@@ -2,16 +2,20 @@
 <html xmlns:th="http://thymeleaf.org">
 <head th:include="_template :: head(#{title.new.advertising})"></head>
 <body>
-	<form th:action="@{/advertising}" method="post" th:object="${advertising}">
+	<header th:include="_template :: navbar"></header>
+	<section class="container pb-3">
+		<div class="card m-auto" style="max-width: 30rem;">
+			<h4 class="card-header">Anunciar alimentos</h4>
 			
-			<div th:include="_template :: form-advertising"></div>
-			
-			<div>
-				<a href="/" th:text="#{button.cancel}"></a>
-				<button th:text="#{button.save}"></button>
-			</div>
-			
-	</form>
+			<div class="card-body">
+		        <form th:action="@{/advertising}" method="post" th:object="${advertising}">
+		            <div th:include="_template :: form-advertising"></div>
+					<a href="/" class="btn btn-danger mt-4 mb-1" th:text="#{button.cancel}"></a>
+					<input type="submit" th:value="#{button.save}" class="btn btn-primary mt-4 mb-1" />
+		        </form>
+		    </div>
+		</div>
+	</section>
 	<div th:include="_template :: scripts"></div>
 </body>
 </html>

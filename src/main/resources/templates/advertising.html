@@ -4,19 +4,56 @@
 <body>
 
 	<header th:include="_template :: navbar"></header>
-	
-	
+	<section class="container pb-3" th:object="${advertising}">
+		<div class="d-flex justify-content-between">
+		    <div class="card col-6" style="max-width: 30rem;">
+		        <h4 class="card-header" th:text="*{title}"></h4>
+		        <div class="card-body">
+		            <h6 class="card-subtitle text-muted mt-2 mb-3" th:text="*{user.name}"></h6>
+		            <p class="card-text" th:text="*{description}"></p>
+		        </div>
+		        <ul class="list-group list-group-flush">
+		            <li class="list-group-item" th:text="*{user.address + ', ' + user.city + ', ' + user.state + ', ' + user.country}">
+		               <!--   @Model.Provider.Address, @Model.Provider.City - @Model.Provider.UF, @Model.Provider.Country-->
+		            </li>
+		            <li class="list-group-item">Quantidade: <span th:text="*{quantity}"></span></li>
+		        </ul>
+		        <div class="card-body">
+		            <div class="d-flex justify-content-between">
+		                <div class="col-auto">
+		                    <button type="button" class="btn btn-outline-primary mt-1" data-toggle="modal" data-target="#withdrawModal">
+		                        Retirar
+		                    </button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="col-6">
+		        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.84302934144!2d-46.62564038393933!3d-23.574080484676532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce597ac07fc4db%3A0x2082237196d0d781!2sAv.%20Lins%20de%20Vasconcelos%2C%201222%20-%20Cambuci%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001538-001!5e0!3m2!1spt-BR!2sbr!4v1637109103458!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		    </div>
+		</div>
 
-
-	<div th:object="${advertising}">
-		<h2 th:text="*{title}"></h2>
-		
-		<form th:action="@{/donation}" method="post" th:object="${donation}">
-			<input type="hidden" name="advertisingId" th:value="${advertising.id}"/>
-			<button type="submit" th:text="#{button.donation.accept}"></button>
-		</form>
-		<a th:href="*{ '/donation/' + id}"></a>
-	</div>
+		<div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <h5 class="modal-title" id="exampleModalLabel">Deseja retirar a doação?</h5>
+		                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+		                    <span aria-hidden="true"></span>
+		                </button>
+		            </div>
+		            <div class="modal-body">
+		                <form th:action="@{/donation}" method="post" class="form-withdraw" th:object="${donation}">
+							<input type="hidden" name="advertisingId" th:value="${advertising.id}"/>
+							<button type="button" class="btn btn-outline-secondary" data-dismiss="modal" th:text="#{button.cancel}"></button>
+							<button type="submit" class="btn btn-success" th:text="#{button.donation.accept}"></button>
+		                </form>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</section>
+	
 	<div th:include="_template :: scripts"></div>
 </body>
 </html>

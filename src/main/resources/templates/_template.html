@@ -199,90 +199,96 @@
 	<div th:fragment="form-advertising">
 		<input type="hidden" name="id" th:field="*{id}"/>
 		
-		<label for="title" th:text="#{label.advertising.title}"></label>
-	
-		<input 
-			type="text" 
-			name="title" 
-			id="title" 
-			th:field="*{title}"
-						 
-		/>
-		<span th:errors="*{title}"></span>
+		<div class="form-group mt-1">
+			<label class="user-label" for="title" th:text="#{label.advertising.title}"></label>
 		
-		<br>
+			<input class="form-control"
+				type="text" 
+				name="title" 
+				id="title" 
+				th:field="*{title}"
+							 
+			/>
+			<span th:errors="*{title}"></span>
+		</div>
 		
-		<label for="quantity" th:text="#{label.advertising.quantity}"></label>
-	
-		<input 
-			type="number" 
-			name="quantity" 
-			id="quantity" 
-			th:field="*{quantity}"
-						 
-		/>
-		<span th:errors="*{quantity}"></span>
+		<div class="form-group mt-1">
+			<label class="user-label" for="quantity" th:text="#{label.advertising.quantity}"></label>
 		
-		<br>
+			<input class="form-control"
+				type="number" 
+				name="quantity" 
+				id="quantity" 
+				th:field="*{quantity}"
+							 
+			/>
+			<span th:errors="*{quantity}"></span>
 		
-		<label for="description" th:text="#{label.advertising.description}"></label>
-		<input 
-			type="text" 
-			name="description" 
-			id="description" 
-			th:field="*{description}"
-				 
-		/>
-		<span th:errors="*{description}"></span>
+		</div>
+		
+		<div class="form-group mt-1">
+		<label class="user-label" for="description" th:text="#{label.advertising.description}"></label>
+			<input class="form-control"
+				type="text" 
+				name="description" 
+				id="description" 
+				th:field="*{description}"
+					 
+			/>
+			<span th:errors="*{description}"></span>
 
-		<br>
+		</div>
 
-		<label for="address" th:text="#{label.advertising.address}"></label>
-		<input 
-			type="text" 
-			name="address" 
-			id="address" 
-			th:field="*{address}"
-						 
-		/>
-		<span th:errors="*{address}"></span>
+		<div class="form-group mt-1">
+			<label class="user-label" for="address" th:text="#{label.advertising.address}"></label>
+			<input class="form-control"
+				type="text" 
+				name="address" 
+				id="address" 
+				th:field="*{address}"
+							 
+			/>
+			<span th:errors="*{address}"></span>
 
-		<br>
+		</div>
+		<div class="form-group mt-1">
+			<label class="user-label" for="city" th:text="#{label.advertising.city}"></label>
+			<input class="form-control"
+				type="text" 
+				name="city" 
+				id="city" 
+				th:field="*{city}"
+							 
+			/>
+			<span th:errors="*{city}"></span>
 		
-		<label for="city" th:text="#{label.advertising.city}"></label>
-		<input 
-			type="text" 
-			name="city" 
-			id="city" 
-			th:field="*{city}"
-						 
-		/>
-		<span th:errors="*{city}"></span>
+		</div>
 		
-		<br>
+		<div class="form-group mt-1">
+			<label class="user-label" for="state" th:text="#{label.advertising.state}"></label>
+			<input class="form-control"
+				type="text" 
+				name="state" 
+				id="state" 
+				th:field="*{state}"
+							 
+			/>
+			<span th:errors="*{state}"></span>
 		
-		<label for="state" th:text="#{label.advertising.state}"></label>
-		<input 
-			type="text" 
-			name="state" 
-			id="state" 
-			th:field="*{state}"
-						 
-		/>
-		<span th:errors="*{state}"></span>
+		</div>
 		
-		<br>
 		
-		<label for="country" th:text="#{label.advertising.country}"></label>
-		<input 
-			type="text" 
-			name="country" 
-			id="country" 
-			th:field="*{country}"
-						 
-		/>
-		<span th:errors="*{country}"></span>
-			
+		<div class="form-group mt-1">
+			<label class="user-label" for="country" th:text="#{label.advertising.country}"></label>
+			<input class="form-control"
+				type="text" 
+				name="country" 
+				id="country" 
+				th:field="*{country}"
+							 
+			/>
+			<span th:errors="*{country}"></span>
+		</div>
 	</div>
 
 

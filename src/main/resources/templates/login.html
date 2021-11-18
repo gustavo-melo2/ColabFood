@@ -5,31 +5,50 @@
 
 <body>
   
-	<span th:text="${msg}" th:if="${msg != null}"></span>
-	<span th:if="${param.error}">Login inválido</span>
+  
+  
+  <section class="container p-3">
+		<div class="card m-auto" style="max-width: 30rem;">
+		    <h4 class="card-header">Login</h4>
+		    <span class="mt-1 text-center text-success" th:text="${msg}" th:if="${msg != null}"></span>
+			<span class="mt-1 text-center text-danger" th:if="${param.error}">Login inválido</span>
+		    <div class="card-body">
+		        <form th:action="@{/login}" method="post" th:object="${user}">
+		            
+		            <div class="form-group">
+		           
+			            <label class="user-label" for="email" th:text="#{label.user.email}"></label>
+						<input class="form-control"
+							type="email" 
+							name="username" 
+							id="email" 			 
+						/>
+			
+					 </div>
+		
+					<div class="form-group">	
+						
+						<label class="user-label" for="password" th:text="#{label.user.password}"></label>
+						<input class="form-control"
+							type="password" 
+							name="password" 
+							id="password" 		 
+						/>
+		            
+		            </div>
+					<a href="/user/new" class="btn btn-warning mt-4 mb-1" th:text="#{button.user.new}"></a>
+					<button  class="btn btn-primary mt-4 mb-1" th:text="#{button.login}"></button>
+		        </form>
+		    </div>
+		</div>
+	</section>
+	
 	
 	<form th:action="@{/login}" method="post">
 	
-		<label for="email" th:text="#{label.user.email}"></label>
-		<input 
-			type="email" 
-			name="username" 
-			id="email" 			 
-		/>
-
-		<br>
 		
-		<label for="password" th:text="#{label.user.password}"></label>
-		<input 
-			type="password" 
-			name="password" 
-			id="password" 		 
-		/>
 		
-		<div>
-			<a href="/user/new" th:text="#{button.user.new}"></a>
-			<button th:text="#{button.login}"></button>
-		</div>
+		
 		
 	</form>
 

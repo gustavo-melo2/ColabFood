@@ -3,6 +3,7 @@
 <head th:include="_template :: head(#{title.edit.advertising})"></head>
 
 <body>
+	<header th:include="_template :: navbar"></header>
 	<form th:action="@{/advertising/edit}" method="post" th:object="${advertising}">
 			
 			<div th:include="_template :: form-advertising"></div>

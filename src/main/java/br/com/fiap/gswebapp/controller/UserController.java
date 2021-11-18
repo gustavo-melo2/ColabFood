@@ -43,10 +43,8 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView("user-form-edit");
 		
 		User user1 = (User) auth.getPrincipal();
-		
 		modelAndView.addObject(user1);
-		
-		
+
 		return modelAndView;
 	}
 	
@@ -62,9 +60,7 @@ public class UserController {
 			User userDb = userFromDb.get();
 			userDb.setDocumentNumber(user.getDocumentNumber());
 			userDb.setName(user.getName());
-			userDb.setPassword(user.getPassword());
 			userDb.setEmail(user.getEmail());
-			userDb.setType(user.getType());
 			userDb.setPhoneNumber(user.getPhoneNumber());
 			userDb.setCountry(user.getCountry());
 			userDb.setAddress(user.getAddress());
@@ -76,7 +72,7 @@ public class UserController {
 		
 		redirect.addFlashAttribute("msg", "Editado com sucesso!");
 		
-		return "redirect:/login";
+		return "redirect:/";
 	}
 	
 	
