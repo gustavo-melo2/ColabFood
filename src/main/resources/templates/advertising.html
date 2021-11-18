@@ -16,13 +16,12 @@
 		            <li class="list-group-item" th:text="*{user.address + ', ' + user.city + ', ' + user.state + ', ' + user.country}">
 		               <!--   @Model.Provider.Address, @Model.Provider.City - @Model.Provider.UF, @Model.Provider.Country-->
 		            </li>
-		            <li class="list-group-item">Quantidade: <span th:text="*{quantity}"></span></li>
+		            <li class="list-group-item" th:text="#{label.advertising.quantity} + ': '"><span th:text="*{quantity}"></span></li>
 		        </ul>
 		        <div class="card-body">
 		            <div class="d-flex justify-content-between">
 		                <div class="col-auto">
-		                    <button type="button" class="btn btn-outline-primary mt-1" data-toggle="modal" data-target="#withdrawModal">
-		                        Retirar
+		                    <button type="button" class="btn btn-outline-primary mt-1" data-toggle="modal" data-target="#withdrawModal" th:text="#{button.donation.accept}">
 		                    </button>
 		                </div>
 		            </div>
@@ -37,7 +36,7 @@
 		    <div class="modal-dialog">
 		        <div class="modal-content">
 		            <div class="modal-header">
-		                <h5 class="modal-title" id="exampleModalLabel">Deseja retirar a doação?</h5>
+		                <h5 class="modal-title" id="exampleModalLabel" th:text="#{modal.confirm.donation}"></h5>
 		                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
 		                    <span aria-hidden="true"></span>
 		                </button>

@@ -22,7 +22,7 @@
 	<header th:fragment="navbar">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-5">
             <div class="container">
-                <a class="navbar-brand colab-logo" href="/">Colab Food</a>
+                <a class="navbar-brand colab-logo" href="/" th:text="#{title.collab.food}"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -31,26 +31,26 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link colab-menu" href="/">
-                                <img th:src="@{~/img/icons/home.svg}" width="14" height="22" class="d-inline-block align-top" /> Home
+                                <img th:src="@{~/img/icons/home.svg}" width="14" height="22" class="d-inline-block align-top" th:text="#{navbar.home}"/>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link colab-menu" href="/advertising/new">
-                                <img th:src="@{~/img/icons/new-document.svg}" width="17" height="23" class="d-inline-block align-top" /> Novo Anúncio
+                                <img th:src="@{~/img/icons/new-document.svg}" width="17" height="23" class="d-inline-block align-top" th:text="#{navbar.new.advertising}"/>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link colab-menu" href="/">
-                                <img th:src="@{~/img/icons/list.svg}" width="13" height="23" class="d-inline-block align-top" /> Doações
+                                <img th:src="@{~/img/icons/list.svg}" width="13" height="23" class="d-inline-block align-top" th:text="#{navbar.donations}"/>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle colab-menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img th:src="@{~/img/icons/user.svg}" width="13" height="22" class="d-inline-block align-top" /> Perfil
+                                <img th:src="@{~/img/icons/user.svg}" width="13" height="22" class="d-inline-block align-top" th:text="#{navbar.profile}"/>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/user/inf">Informações</a>
-                                <a class="dropdown-item bg-danger" href="/logout">Sair</a>
+                                <a class="dropdown-item" href="/user/inf" th:text="#{navbar.information}"></a>
+                                <a class="dropdown-item bg-danger" href="/logout" th:text="#{navbar.logout}"></a>
                             </div>
                         </li>
                     </ul>

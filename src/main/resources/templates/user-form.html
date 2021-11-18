@@ -4,7 +4,7 @@
 <body>
 	<section class="container p-3">
 		<div class="card m-auto" style="max-width: 30rem;">
-		    <h4 class="card-header">Cadastro</h4>
+		    <h4 class="card-header" th:text="#{title.new.user}"></h4>
 		    <div class="card-body">
 		        <form th:action="@{/user}" method="post" th:object="${user}">
 		            <div th:include="_template :: form-user('create')"></div>

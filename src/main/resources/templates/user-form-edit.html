@@ -8,7 +8,7 @@
 	<header th:include="_template :: navbar"></header>
 	<section class="container pb-3">
 		<div class="card mb-3" style="max-width: 30rem;">
-		    <h4 class="card-header">Editar dados de Cadastro</h4>
+		    <h4 class="card-header" th:text="#{title.edit.user}"></h4>
 		    <div class="card-body">
 		        <form th:action="@{/user/edit}" method="post" th:object="${user}">
 		            <div th:include="_template :: form-user('edit')"></div>

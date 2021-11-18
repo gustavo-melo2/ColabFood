@@ -4,14 +4,12 @@
 <head th:include="_template :: head(#{title.login})"></head>
 
 <body>
-  
-  
-  
+
   <section class="container p-3">
 		<div class="card m-auto" style="max-width: 30rem;">
-		    <h4 class="card-header">Login</h4>
+		    <h4 class="card-header" th:text="#{title.login.h}"></h4>
 		    <span class="mt-1 text-center text-success" th:text="${msg}" th:if="${msg != null}"></span>
-			<span class="mt-1 text-center text-danger" th:if="${param.error}">Login inválido</span>
+			<span class="mt-1 text-center text-danger" th:if="${param.error}" th:text="#{error.login.invalid}"></span>
 		    <div class="card-body">
 		        <form th:action="@{/login}" method="post" th:object="${user}">
 		            

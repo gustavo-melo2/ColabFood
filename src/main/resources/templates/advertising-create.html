@@ -5,7 +5,7 @@
 	<header th:include="_template :: navbar"></header>
 	<section class="container pb-3">
 		<div class="card m-auto" style="max-width: 30rem;">
-			<h4 class="card-header">Anunciar alimentos</h4>
+			<h4 class="card-header" th:text="#{title.new.advertising}"></h4>
 			
 			<div class="card-body">
 		        <form th:action="@{/advertising}" method="post" th:object="${advertising}">
