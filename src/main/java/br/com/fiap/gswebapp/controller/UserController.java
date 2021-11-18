@@ -3,6 +3,7 @@ package br.com.fiap.gswebapp.controller;
 import br.com.fiap.gswebapp.model.User;
 import br.com.fiap.gswebapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -37,13 +38,14 @@ public class UserController {
 		return "user-form";
 	}
 	
-	@GetMapping("{id}")
-	public ModelAndView show(@PathVariable Long id, User user){
+	@GetMapping("/inf")
+	public ModelAndView show(User user, Authentication auth){
 		ModelAndView modelAndView = new ModelAndView("user-form-edit");
-		Optional<User> userFromDb = repository.findById(id);
-		if(userFromDb.isPresent()) {
-			modelAndView.addObject((User)userFromDb.get());
-		}
+		
+		User user1 = (User) auth.getPrincipal();
+		
+		modelAndView.addObject(user1);
+		
 		
 		return modelAndView;
 	}

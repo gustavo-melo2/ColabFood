@@ -49,7 +49,7 @@
                                 <img th:src="@{~/img/icons/user.svg}" width="13" height="22" class="d-inline-block align-top" /> Perfil
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/">Informações</a>
+                                <a class="dropdown-item" href="/user/inf">Informações</a>
                                 <a class="dropdown-item bg-danger" href="/logout">Sair</a>
                             </div>
                         </li>
@@ -59,132 +59,139 @@
         </nav>
     </header>
     
-	<div th:fragment="form-user">
+	<div th:fragment="form-user(action)">
 		<input type="hidden" name="id" th:field="*{id}"/>
-		
-		<p th:text="#{label.user.type}"></p>
-		<input 
-			type="radio" id="producer" 
-			name="type" th:field="*{type}" 
-			value="PRODUCER">
-		<label for="producer" th:text="#{label.user.type.producer}"></label><br>
-		<input 
-			type="radio" id="charity" 
-			name="type" th:field="*{type}" 
-			value="CHARITY">
-		<label for="charity" th:text="#{label.user.type.charity}"></label><br>
-		
-		<span th:errors="*{type}"></span>
-		
-		<br>
-	
-		<label for="name" th:text="#{label.user.name}"></label>
-	
-		<input 
-			type="text" 
-			name="name" 
-			id="name" 
-			th:field="*{name}"
-						 
-		/>
-		<span th:errors="*{name}"></span>
-		
-		<br>
-		
-		<label for="documentNumber" th:text="#{label.user.documentNumber}"></label>
-		<input 
-			type="text" 
-			name="documentNumber" 
-			id="documentNumber" 
-			th:field="*{documentNumber}"
-				 
-		/>
-		<span th:errors="*{documentNumber}"></span>
-
-		<br>
-
-		<label for="email" th:text="#{label.user.email}"></label>
-		<input 
-			type="email" 
-			name="email" 
-			id="email" 
-			th:field="*{email}"
-						 
-		/>
-		<span th:errors="*{email}"></span>
-
-		<br>
-		
-		<label for="password" th:text="#{label.user.password}"></label>
-		<input 
-			type="password" 
-			name="password" 
-			id="password" 
-			th:field="*{password}"
-						 
-		/>
-		<span th:errors="*{password}"></span>
-		
-		<br>
-		
-		<label for="phoneNumber" th:text="#{label.user.phoneNumber}"></label>
-		<input 
-			type="text" 
-			name="phoneNumber" 
-			id="phoneNumber" 
-			th:field="*{phoneNumber}"
-						 
-		/>
-		<span th:errors="*{phoneNumber}"></span>
-		
-		<br>
-		
-		<label for="country" th:text="#{label.user.country}"></label>
-		<input 
-			type="text" 
-			name="country" 
-			id="country" 
-			th:field="*{country}"
-						 
-		/>
-		<span th:errors="*{country}"></span>
-		
-		<br>
-		
-		<label for="address" th:text="#{label.user.address}"></label>
-		<input 
-			type="text" 
-			name="address" 
-			id="address" 
-			th:field="*{address}"
-						 
-		/>
-		<span th:errors="*{address}"></span>
-		
-		<br>
-		
-		<label for="city" th:text="#{label.user.city}"></label>
-		<input 
-			type="text" 
-			name="city" 
-			id="city" 
-			th:field="*{city}"
-						 
-		/>
-		<span th:errors="*{city}"></span>
-		
-		<br>
-		
-		<label for="state" th:text="#{label.user.state}"></label>
-		<input 
-			type="text" 
-			name="state" 
-			id="state" 
-			th:field="*{state}"
-						 
-		/>
-		<span th:errors="*{state}"></span>
+		<div class="form-group mt-1" th:if="${action=='create'}">
+			<p class="user-label" th:text="#{label.user.type}"></p>
+			<input
+				type="radio" id="producer" 
+				name="type" th:field="*{type}" 
+				value="PRODUCER">
+			<label class="user-label" for="producer" th:text="#{label.user.type.producer}"></label>
+			<input 
+				type="radio" id="charity" 
+				name="type" th:field="*{type}" 
+				value="CHARITY">
+			<label class="user-label" for="charity" th:text="#{label.user.type.charity}"></label>
 			
+			<span th:errors="*{type}"></span>
+		</div>
+		
+		<div class="form-group mt-1">
+			<label class="user-label" for="name" th:text="#{label.user.name}"></label>
+		
+			<input class="form-control"
+				type="text" 
+				name="name" 
+				id="name" 
+				th:field="*{name}"
+							 
+			/>
+			<span th:errors="*{name}"></span>
+		
+		</div>
+			<div class="form-group mt-1">
+			<label class="user-label" for="documentNumber" th:text="#{label.user.documentNumber}"></label>
+			<input class="form-control"
+				type="text" 
+				name="documentNumber" 
+				id="documentNumber" 
+				th:field="*{documentNumber}"
+					 
+			/>
+			<span th:errors="*{documentNumber}"></span>
+
+		</div>
+		<div class="form-group mt-1">
+			<label class="user-label" for="email" th:text="#{label.user.email}"></label>
+			<input class="form-control"
+				type="email" 
+				name="email" 
+				id="email" 
+				th:field="*{email}"
+							 
+			/>
+			<span th:errors="*{email}"></span>
+
+		</div>
+		
+		<div class="form-group mt-1" th:if="${action=='create'}" >
+			<label class="user-label" for="password" th:text="#{label.user.password}"></label>
+			<input class="form-control"
+				type="password" 
+				name="password" 
+				id="password" 
+				th:field="*{password}"
+							 
+			/>
+			<span th:errors="*{password}"></span>
+		
+		</div>
+		
+		<div class="form-group mt-1">
+			<label class="user-label" for="phoneNumber" th:text="#{label.user.phoneNumber}"></label>
+			<input class="form-control"
+				type="text" 
+				name="phoneNumber" 
+				id="phoneNumber" 
+				th:field="*{phoneNumber}"
+							 
+			/>
+			<span th:errors="*{phoneNumber}"></span>
+		
+		</div>
+		
+		<div class="form-group mt-1">
+			<label class="user-label" for="country" th:text="#{label.user.country}"></label>
+			<input class="form-control"
+				type="text" 
+				name="country" 
+				id="country" 
+				th:field="*{country}"
+							 
+			/>
+			<span th:errors="*{country}"></span>
+		
+		</div>
+		
+		
+		<div class="form-group mt-1">
+			<label class="user-label" for="address" th:text="#{label.user.address}"></label>
+			<input class="form-control"
+				type="text" 
+				name="address" 
+				id="address" 
+				th:field="*{address}"
+							 
+			/>
+			<span th:errors="*{address}"></span>
+		
+		</div>
+		
+		<div class="form-group mt-1">
+			<label class="user-label" for="city" th:text="#{label.user.city}"></label>
+			<input class="form-control"
+				type="text" 
+				name="city" 
+				id="city" 
+				th:field="*{city}"
+							 
+			/>
+			<span th:errors="*{city}"></span>
+		
+		</div>
+		
+		<div class="form-group mt-1">
+			<label class="user-label" for="state" th:text="#{label.user.state}"></label>
+			<input class="form-control"
+				type="text" 
+				name="state" 
+				id="state" 
+				th:field="*{state}"
+							 
+			/>
+			<span th:errors="*{state}"></span>
+		</div>
 	</div>
 	
 	<!-- FORMULARIO DE ANUNCIO -->

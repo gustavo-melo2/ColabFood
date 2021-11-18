@@ -4,15 +4,20 @@
 >
 <head th:include="_template :: head(#{title.edit.user})"></head>
 <body>
-	<form th:action="@{/user/edit}" method="post" th:object="${#authentication.getPrincipal().getName()}">
-			
-			<div th:include="_template :: form-user"></div>
-			
-			<div>
-				<a href="/" th:text="#{button.cancel}"></a>
-				<button th:text="#{button.save}"></button>
-			</div>
-			
-	</form>
+
+	<header th:include="_template :: navbar"></header>
+	<section class="container pb-3">
+		<div class="card mb-3" style="max-width: 30rem;">
+		    <h4 class="card-header">Editar dados de Cadastro</h4>
+		    <div class="card-body">
+		        <form th:action="@{/user/edit}" method="post" th:object="${user}">
+		            <div th:include="_template :: form-user('edit')"></div>
+		            <input type="submit" th:value="#{button.save}" class="btn btn-primary mt-4 mb-1" />
+		        </form>
+		    </div>
+		</div>
+	</section>
+	<div th:include="_template :: scripts"></div>
+	
 </body>
 </html>

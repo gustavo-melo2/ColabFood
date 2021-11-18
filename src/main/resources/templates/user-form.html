@@ -2,15 +2,18 @@
 <html xmlns:th="http://thymeleaf.org">
 <head th:include="_template :: head(#{title.new.user})"></head>
 <body>
-	<form th:action="@{/user}" method="post" th:object="${user}">
-			
-			<div th:include="_template :: form-user"></div>
-			
-			<div>
-				<a href="/login" th:text="#{button.cancel}"></a>
-				<button th:text="#{button.save}"></button>
-			</div>
-			
-	</form>
+	<section class="container p-3">
+		<div class="card m-auto" style="max-width: 30rem;">
+		    <h4 class="card-header">Cadastro</h4>
+		    <div class="card-body">
+		        <form th:action="@{/user}" method="post" th:object="${user}">
+		            <div th:include="_template :: form-user('create')"></div>
+					<a href="/login" class="btn btn-danger mt-4 mb-1" th:text="#{button.cancel}"></a>
+					<input type="submit" th:value="#{button.save}" class="btn btn-primary mt-4 mb-1" />
+		        </form>
+		    </div>
+		</div>
+	</section>
+	<div th:include="_template :: scripts"></div>
 </body>
 </html>
