@@ -27,6 +27,13 @@ public class UserController {
 	@PostMapping
 	public String save(@Valid User user, BindingResult result, RedirectAttributes redirect) {
 		if(result.hasErrors()) return "user-form";
+		
+		Optional<User> userDB = repository.findByEmail(user.getEmail());
+		
+		if(userDB.isPresent()) {
+			redirect.addFlashAttribute("msg", "Usuario com email já cadastrado! Tente outro email ou faça Login.");
+			return "redirect:/user/new";
+		}
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		repository.save(user);
 		redirect.addFlashAttribute("msg", "Cadastrado com sucesso!");

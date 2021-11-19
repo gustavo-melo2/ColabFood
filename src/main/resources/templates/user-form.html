@@ -3,7 +3,9 @@
 <head th:include="_template :: head(#{title.new.user})"></head>
 <body>
 	<section class="container p-3">
+		
 		<div class="card m-auto" style="max-width: 30rem;">
+			<span class="text-center text-danger" th:text="${msg}" th:if="${msg != null}"></span>
 		    <h4 class="card-header" th:text="#{title.new.user}"></h4>
 		    <div class="card-body">
 		        <form th:action="@{/user}" method="post" th:object="${user}">

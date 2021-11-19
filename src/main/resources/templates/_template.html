@@ -72,9 +72,9 @@
 				type="radio" id="charity" 
 				name="type" th:field="*{type}" 
 				value="CHARITY">
-			<label class="user-label" for="charity" th:text="#{label.user.type.charity}"></label>
+			<label class="user-label" for="charity" th:text="#{label.user.type.charity}"></label><br>
 			
-			<span th:errors="*{type}"></span>
+			<span class="text-danger" th:errors="*{type}"></span>
 		</div>
 		
 		<div class="form-group mt-1">
@@ -87,7 +87,7 @@
 				th:field="*{name}"
 							 
 			/>
-			<span th:errors="*{name}"></span>
+			<span class="text-danger" th:errors="*{name}"></span>
 		
 		</div>
 			<div class="form-group mt-1">
@@ -99,7 +99,7 @@
 				th:field="*{documentNumber}"
 					 
 			/>
-			<span th:errors="*{documentNumber}"></span>
+			<span class="text-danger" th:errors="*{documentNumber}"></span>
 
 		</div>
 		<div class="form-group mt-1">
@@ -111,7 +111,7 @@
 				th:field="*{email}"
 							 
 			/>
-			<span th:errors="*{email}"></span>
+			<span class="text-danger" th:errors="*{email}"></span>
 
 		</div>
 		
@@ -124,7 +124,7 @@
 				th:field="*{password}"
 							 
 			/>
-			<span th:errors="*{password}"></span>
+			<span class="text-danger" th:errors="*{password}"></span>
 		
 		</div>
 		
@@ -137,7 +137,7 @@
 				th:field="*{phoneNumber}"
 							 
 			/>
-			<span th:errors="*{phoneNumber}"></span>
+			<span class="text-danger" th:errors="*{phoneNumber}"></span>
 		
 		</div>
 		
@@ -150,7 +150,7 @@
 				th:field="*{country}"
 							 
 			/>
-			<span th:errors="*{country}"></span>
+			<span class="text-danger" th:errors="*{country}"></span>
 		
 		</div>
 		
@@ -164,7 +164,7 @@
 				th:field="*{address}"
 							 
 			/>
-			<span th:errors="*{address}"></span>
+			<span class="text-danger" th:errors="*{address}"></span>
 		
 		</div>
 		
@@ -177,7 +177,7 @@
 				th:field="*{city}"
 							 
 			/>
-			<span th:errors="*{city}"></span>
+			<span class="text-danger" th:errors="*{city}"></span>
 		
 		</div>
 		
@@ -190,7 +190,7 @@
 				th:field="*{state}"
 							 
 			/>
-			<span th:errors="*{state}"></span>
+			<span class="text-danger" th:errors="*{state}"></span>
 		</div>
 	</div>
 	
@@ -209,7 +209,7 @@
 				th:field="*{title}"
 							 
 			/>
-			<span th:errors="*{title}"></span>
+			<span class="text-danger" th:errors="*{title}"></span>
 		</div>
 		
 		<div class="form-group mt-1">
@@ -222,7 +222,7 @@
 				th:field="*{quantity}"
 							 
 			/>
-			<span th:errors="*{quantity}"></span>
+			<span class="text-danger" th:errors="*{quantity}"></span>
 		
 		</div>
 		
@@ -235,7 +235,7 @@
 				th:field="*{description}"
 					 
 			/>
-			<span th:errors="*{description}"></span>
+			<span class="text-danger" th:errors="*{description}"></span>
 
 		</div>
 
@@ -248,7 +248,7 @@
 				th:field="*{address}"
 							 
 			/>
-			<span th:errors="*{address}"></span>
+			<span class="text-danger" th:errors="*{address}"></span>
 
 		</div>
 		<div class="form-group mt-1">
@@ -260,7 +260,7 @@
 				th:field="*{city}"
 							 
 			/>
-			<span th:errors="*{city}"></span>
+			<span class="text-danger" th:errors="*{city}"></span>
 		
 		</div>
 		
@@ -273,7 +273,7 @@
 				th:field="*{state}"
 							 
 			/>
-			<span th:errors="*{state}"></span>
+			<span class="text-danger" th:errors="*{state}"></span>
 		
 		</div>
 		
@@ -287,7 +287,7 @@
 				th:field="*{country}"
 							 
 			/>
-			<span th:errors="*{country}"></span>
+			<span class="text-danger" th:errors="*{country}"></span>
 		</div>
 	</div>
 
