@@ -4,8 +4,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Collection;
@@ -31,6 +31,7 @@ public class User implements UserDetails{
 	private String password;
 
 	@NotBlank(message = "{user.email.blank}")
+	@Email(message = "{user.email.valid}")
 	private String email;
 
 	@NotNull(message = "{user.type.null}")

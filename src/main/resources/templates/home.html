@@ -27,7 +27,7 @@
 		                
 		                <div class="d-flex justify-content-between">
 		                    <div class="col-auto mr-auto mt-1">
-		                        <p th:text="#{label.advertising.quantity}"><span th:text="${a.quantity}"></span></p>
+		                        <span th:text="#{label.advertising.quantity}"></span><span th:text="${': '+a.quantity}"></span>
 		                    </div>
 		                    <div class="col-auto">
 		                        <a class="btn btn-outline-primary" th:href="${'/advertising/' + a.id}" th:text="#{link.home.details}"></a>
