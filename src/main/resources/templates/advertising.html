@@ -16,7 +16,7 @@
 		            <li class="list-group-item" th:text="*{user.address + ', ' + user.city + ', ' + user.state + ', ' + user.country}">
 		               <!--   @Model.Provider.Address, @Model.Provider.City - @Model.Provider.UF, @Model.Provider.Country-->
 		            </li>
-		            <li class="list-group-item" th:text="#{label.advertising.quantity} + ': '"><span th:text="*{quantity}"></span></li>
+		            <li class="list-group-item" th:text="#{label.advertising.quantity} + ': '+ *{quantity}"></li>
 		        </ul>
 		        <div class="card-body">
 		            <div class="d-flex justify-content-between">
