@@ -14,7 +14,7 @@ Integrantes do grupo Dev Zeppelin:
 
 Link do video: https://www.youtube.com/watch?v=Pwm_S9jLRQk
 
-Intruções para execução e testes:
+Intruções para execução:
 
 No workspace que contem seus projeto rode o comando: git clone https://github.com/gustavo-melo2/ColabFood
 
@@ -40,11 +40,43 @@ Qlique no projeto "ColabFood" e selecione a classe "GswebappApplication.java". C
 
 ![rodandoprojeto](https://user-images.githubusercontent.com/63134386/142699381-a36d43ba-8852-4ec4-bccc-bc4588141040.png)
 
+Intruções para teste:
 
+Quando o projeto for iniciado, só as paginas de login e cadastro estarão acessiveis.
 
+![Login](https://user-images.githubusercontent.com/63134386/142705275-e063a0c9-c49e-434f-9c6f-64d745712240.png)
 
+Nos cadastramos para podermos ter acesso as funcionalidades do sistemas.
 
+![cadastrouser](https://user-images.githubusercontent.com/63134386/142705478-bdd07d70-5238-4551-86f5-614064009ac2.png)
 
+Entramos com a nossa conta recem criada.
+
+![loginuser](https://user-images.githubusercontent.com/63134386/142705585-39a2ffef-e4c5-4b41-a74e-0b978648c0b6.png)
+
+Clicamos em novo anuncio na barra de navegação para acessar a pagina de criação.
+
+![homenovoanuncio](https://user-images.githubusercontent.com/63134386/142705698-344bfaa0-a66a-4d29-ac5a-564d1e094885.png)
+
+Cadastramos um novo anuncio para ser exibido para todos os usuarios.
+
+![cadastroanuncio](https://user-images.githubusercontent.com/63134386/142705996-f5373536-856a-4b65-bf61-ae89f87ccb03.png)
+
+Voltando para a home, conseguiremos ver que nosso anuncio foi realmente criado. Clicamos em detalhes para visualizar mais detalhes do anuncio.
+
+![homenovoanuncio](https://user-images.githubusercontent.com/63134386/142706070-5a1f50d2-9ca1-48ea-b6ec-fbcfc3e0bf7b.png)
+
+Nesta tela podemos aceitar a doação clicando no botão "Aceitar doação".
+
+![detalhesanuncio](https://user-images.githubusercontent.com/63134386/142706204-6b96de0a-dd73-4261-ac87-11858241f659.png)
+
+Na pagina de informações de usuario, podemos visualizar e editar nossos dados de cadastro clicando no botão "salvar".
+
+![editaruser](https://user-images.githubusercontent.com/63134386/142706424-757b5945-3c5b-4aa5-807d-5a6219bee673.png)
+
+E ao clicar em "sair" poderemos finalizar nossa sessão
+
+![sair](https://user-images.githubusercontent.com/63134386/142706574-a21a43f1-72ec-4ec7-90cc-18cf8174f881.png)
 
 
 
